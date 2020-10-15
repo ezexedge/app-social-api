@@ -24,6 +24,9 @@ const userRoutes = require('./routes/user')
 app.use(morgan('dev'))
 
 app.use(bodyParser.json())
+if ((process.env.NODE_ENV = 'development')) {
+    app.use(cors({ origin: process.env.CLIENT_URL }));
+}
 app.use(cookieParser())
 app.use(expressValidator())
 app.use(cors())
@@ -43,6 +46,9 @@ app.use(function(req,res,next){
 })
 
 
-app.listen(8000,function(){
-	console.log('corriendo port 3000')
-})
+const port = process.env.PORT || 8000;
+app.listen(port, () => {
+    console.log(`API is running on port ${port}`)
+});
+
+
