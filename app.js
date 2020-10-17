@@ -24,9 +24,7 @@ const userRoutes = require('./routes/user')
 app.use(morgan('dev'))
 
 app.use(bodyParser.json())
-if ((process.env.NODE_ENV = 'development')) {
-    app.use(cors({ origin: process.env.CLIENT_URL }));
-}
+
 app.use(cookieParser())
 app.use(expressValidator())
 app.use(cors())
