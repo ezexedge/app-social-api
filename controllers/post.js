@@ -37,7 +37,7 @@ exports.getPosts = async (req, res) => {
                 .populate("comments", "text created")
                 .populate("comments.postedBy", "_id name")
                 .populate("postedBy", "_id name")
-                .sort({ date: -1 })
+                .sort({ created: -1 })
                 .limit(perPage)
                 .select("_id title body likes");
         })
